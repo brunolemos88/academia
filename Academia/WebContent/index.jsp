@@ -14,7 +14,7 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container-fluid">
-				<a class="brand" href="/mvc/painel">ACADEMIA LP4 - IFMS alteração</a>
+				<a class="brand" href="/mvc/painel">ACADEMIA LP4 - IFMS</a>
 				<div class="nav-collapse collapse">
 					<p class="navbar-text pull-right">
 						Seja Bem vindo(a) <a href="#" class="navbar-link"> </a>
