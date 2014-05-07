@@ -6,10 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = Modalidade.LISTAR_TODOS, query = "FROM Filme ORDER BY titulo")
+@NamedQuery(name = Modalidade.LISTAR_TODOS, query = "FROM Modalidade ORDER BY id")
 public class Modalidade {
 
-	public static final String LISTAR_TODOS = "Filme.listarTodos";
+	public static final String LISTAR_TODOS = "Modalidade.listarTodos";
 
 	@Id
 	@GeneratedValue
