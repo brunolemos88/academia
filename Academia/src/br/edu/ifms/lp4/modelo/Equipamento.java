@@ -3,6 +3,7 @@ package br.edu.ifms.lp4.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Equipamento {
@@ -13,6 +14,7 @@ public class Equipamento {
 
 	private String descricao;
 
+	@OneToMany(targetEntity = Modalidade.class)
 	private String idModalidade;
 
 	private String qtdEstoque;

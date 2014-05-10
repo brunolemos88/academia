@@ -3,6 +3,7 @@ package br.edu.ifms.lp4.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Curso {
@@ -12,7 +13,8 @@ public class Curso {
 	private String id;
 
 	private String descricao;
-
+	
+	@OneToMany(targetEntity = Modalidade.class)
 	private String idModalidade;
 
 	private String horario1;
