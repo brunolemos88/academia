@@ -1,12 +1,14 @@
 package br.edu.ifms.lp4.service;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.ifms.lp4.bean.ModalidadeBean;
 import br.edu.ifms.lp4.jpa.dao.ModalidadeDao;
 import br.edu.ifms.lp4.modelo.Modalidade;
 
@@ -24,22 +26,16 @@ public class ModalidadeServlet extends HttpServlet {
 		String descricao = request.getParameter("descricao");
 		String resposta = "";
 
-		if (!descricao.isEmpty()) {
-			try {
-				Modalidade modalidade = new Modalidade();
-				modalidade.setDescricao(descricao);
+		if (descricao != null && !descricao.isEmpty()) {
+			Modalidade modalidade = new Modalidade();
+			modalidade.setDescricao(descricao);
 
-				ModalidadeDao modalidadeDao = new ModalidadeDao();
-				modalidadeDao.salva(modalidade);
-
-				resposta = "Salvo com sucesso!";
-			} catch (Exception e) {
-				e.printStackTrace();
-				resposta = "Ocorreu um erro ao tentar realizar o cadastro.";
-			}
-		} else {
-			resposta = "Dados incompletos!";
+			ModalidadeBean modalidadeBean = new ModalidadeBean();
+			resposta = modalidadeBean.salvaModalidade(modalidade) ? "Salvo com sucesso!" : "Erro ao gravar";
+		}else{
+			resposta = "Nenhuma descrição informada";
 		}
+		
 		response.sendRedirect("index.jsp?resposta=" + resposta);
 	}
 }

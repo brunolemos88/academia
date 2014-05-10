@@ -13,11 +13,11 @@ public class Modalidade {
 
 	@Id
 	@GeneratedValue
-	private String id;
+	private Integer id;
 
 	private String descricao;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 

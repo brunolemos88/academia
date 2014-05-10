@@ -10,7 +10,7 @@ public class Curso {
 
 	@Id
 	@GeneratedValue
-	private String id;
+	private Integer id;
 
 	private String descricao;
 	
@@ -21,7 +21,7 @@ public class Curso {
 
 	private String horario2;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 

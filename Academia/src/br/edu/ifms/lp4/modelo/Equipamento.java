@@ -10,7 +10,7 @@ public class Equipamento {
 
 	@Id
 	@GeneratedValue
-	private String id;
+	private Integer id;
 
 	private String descricao;
 
@@ -19,7 +19,7 @@ public class Equipamento {
 
 	private String qtdEstoque;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
