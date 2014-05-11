@@ -4,11 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 @Entity
+@NamedQuery(name = Curso.LISTAR_TODOS, query = "FROM Curso ORDER BY id")
 public class Curso {
-
+	
+	public static final String LISTAR_TODOS = "Curso.listarTodos";
+	
 	@Id
 	@GeneratedValue
 	private Integer id;

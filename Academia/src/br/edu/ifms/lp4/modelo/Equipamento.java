@@ -4,10 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = Equipamento.LISTAR_TODOS, query = "FROM Equipamento ORDER BY id")
 public class Equipamento {
 
+	public static final String LISTAR_TODOS = "Equipamento.listarTodos";
+	
 	@Id
 	@GeneratedValue
 	private Integer id;
