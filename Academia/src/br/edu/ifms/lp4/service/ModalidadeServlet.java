@@ -17,6 +17,8 @@ public class ModalidadeServlet extends HttpServlet {
 
 	private String mensagem = "";
 	private String classeCSS = "";
+	
+	private Integer id;
 
 	private ModalidadeBean bean = new ModalidadeBean();
 	private Modalidade modalidade;
@@ -33,12 +35,18 @@ public class ModalidadeServlet extends HttpServlet {
 			switch (acao) {
 			case "salva":
 				String descricao = request.getParameter("descricao");
+				if (request.getParameter("id") != null){
+					id = Integer.parseInt(request.getParameter("id"));
+				}
 				response.sendRedirect(salva(descricao));
 				break;
 			case "remove":
-				Integer id = Integer.parseInt(request.getParameter("id"));
+				id = Integer.parseInt(request.getParameter("id"));
 				response.sendRedirect(remove(id));
 				break;
+			case "editar":
+				id = Integer.parseInt(request.getParameter("id"));
+				response.sendRedirect(editar(id));
 			default:
 				break;
 			}
@@ -48,7 +56,7 @@ public class ModalidadeServlet extends HttpServlet {
 
 	}
 
-	protected String remove(Integer id) {
+	private String remove(Integer id) {
 
 		modalidade = new Modalidade();
 
@@ -63,7 +71,7 @@ public class ModalidadeServlet extends HttpServlet {
 
 	}
 
-	protected String salva(String descricao) {
+	private String salva(String descricao) {
 
 		modalidade = new Modalidade();
 		modalidade.setDescricao(descricao);
@@ -78,8 +86,14 @@ public class ModalidadeServlet extends HttpServlet {
 
 		return resposta(mensagem, classeCSS);
 	}
+	
+	private String editar(Integer id){
+		modalidade = new Modalidade();
+		bean.recuperaModalidade(id);
+		return null;
+	}
 
-	protected String resposta(String mensagem, String classResposta) {
+	private String resposta(String mensagem, String classResposta) {
 		return "index.jsp?pagina=modalidades&resposta=" + mensagem
 				+ "&classResposta=" + classeCSS;
 	}
