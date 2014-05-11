@@ -12,7 +12,8 @@
 <div class="row-fluid">
 	<div class="span12">
 
-		<form name="cadastra_modalidade" action="modalidade" method="get">
+		<form name="cadastra_modalidade" action="modalidade?acao=salva"
+			method="post" enctype="application/x-www-form-urlencoded">
 			<fieldset>
 
 				<label>Descrição</label> <input class="input-block-level"
@@ -51,7 +52,7 @@
 			<tr>
 				<td>${modalidade.id}</td>
 				<td>${modalidade.descricao}</td>
-				<td><a href="modalidade?id=${modalidade.id}" title="Apagar"
+				<td><a href="modalidade?id=${modalidade.id}&acao=remove" title="Apagar"
 					class="btn btn-mini btn-danger"><i
 						class="icon-remove icon-white"></i></a></td>
 			</tr>

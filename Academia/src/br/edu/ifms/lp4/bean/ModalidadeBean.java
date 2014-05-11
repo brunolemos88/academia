@@ -19,7 +19,8 @@ public class ModalidadeBean {
 		return modalidadeDao.salva(modalidade) != null ? true : false;
 	}
 
-	public boolean deletaModalidade(Modalidade modalidade) {
+	public boolean deletaModalidade(Integer id) {
+		Modalidade modalidade = recuperaModalidade(id);
 		return modalidadeDao.remove(modalidade);
 	}
 	
