@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name = Curso.LISTAR_TODOS, query = "FROM Curso ORDER BY id")

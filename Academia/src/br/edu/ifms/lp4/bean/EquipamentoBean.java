@@ -10,20 +10,20 @@ public class EquipamentoBean {
 	private List<Equipamento> equipamentos;
 	private EquipamentoDao equipamentoDao = new EquipamentoDao();
 
-	public List<Equipamento> getModalidades() {
+	public List<Equipamento> getEquipamentos() {
 		equipamentos = equipamentoDao.recuperaTodos();
 		return equipamentos;
 	}
 
-	public boolean salvaModalidade(Equipamento modalidade) {
-		return equipamentoDao.salva(modalidade) != null ? true : false;
+	public boolean salvaEquipamento(Equipamento equipamento) {
+		return equipamentoDao.salva(equipamento) != null ? true : false;
 	}
 
-	public boolean deletaModalidade(Equipamento modalidade) {
-		return equipamentoDao.remove(modalidade);
+	public boolean deletaEquipamento(Equipamento equipamento) {
+		return equipamentoDao.remove(equipamento);
 	}
 	
-	public Equipamento recuperaModalidade(Integer id){
+	public Equipamento recuperaEquipamento(Integer id){
 		return equipamentoDao.recupera(id);
 	}
 	

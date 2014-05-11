@@ -9,20 +9,20 @@ public class CursoBean {
 	private List<Curso> cursos;
 	private CursoDao cursoDao = new CursoDao();
 
-	public List<Curso> getModalidades() {
+	public List<Curso> getCursos() {
 		cursos = cursoDao.recuperaTodos();
 		return cursos;
 	}
 
-	public boolean salvaModalidade(Curso modalidade) {
-		return cursoDao.salva(modalidade) != null ? true : false;
+	public boolean salvaCurso(Curso curso) {
+		return cursoDao.salva(curso) != null ? true : false;
 	}
 
-	public boolean deletaModalidade(Curso modalidade) {
-		return cursoDao.remove(modalidade);
+	public boolean deletaCurso(Curso curso) {
+		return cursoDao.remove(curso);
 	}
 
-	public Curso recuperaModalidade(Integer id) {
+	public Curso recuperaCurso(Integer id) {
 		return cursoDao.recupera(id);
 	}
 }
