@@ -19,7 +19,7 @@ public class ModalidadeServlet extends HttpServlet {
 	private String mensagem = "mensagem";
 	private String classeCSS = "classeCSS";
 	private HashMap<String, String> mensagens;
-	
+
 	private Integer id;
 
 	private ModalidadeBean bean = new ModalidadeBean();
@@ -34,25 +34,30 @@ public class ModalidadeServlet extends HttpServlet {
 
 		try {
 			String acao = request.getParameter("acao");
+			
 			switch (acao) {
+			
 			case "salva":
 				String descricao = request.getParameter("descricao");
-				if (request.getParameter("id").equals("")){
+				if (request.getParameter("id").equals("")) {
 					String url = salva(descricao, null);
-					response.sendRedirect(url);			
-				}else{
+					response.sendRedirect(url);
+				} else {
 					id = Integer.parseInt(request.getParameter("id"));
 					response.sendRedirect(salva(descricao, id));
 				}
 				break;
+			
 			case "remove":
 				id = Integer.parseInt(request.getParameter("id"));
 				response.sendRedirect(remove(id));
 				break;
+			
 			default:
 				break;
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			response.sendRedirect("index.jsp?exception");
 		}
 
@@ -67,9 +72,11 @@ public class ModalidadeServlet extends HttpServlet {
 		modalidade = new Modalidade();
 		modalidade.setDescricao(descricao);
 		modalidade.setId(id);
-		
+
 		mensagens = bean.salvaModalidade(modalidade);
-		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
+		
+		return "index.jsp?salvouuuuuuuuuuu";
+		//return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
 	}
 
 	private String resposta(String mensagem, String classeResposta) {
@@ -78,4 +85,3 @@ public class ModalidadeServlet extends HttpServlet {
 	}
 
 }
-
