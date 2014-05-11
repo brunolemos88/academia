@@ -19,7 +19,7 @@
 				<label>Descrição</label> <input class="input-block-level"
 					type="text" name="descricao" autofocus="autofocus" maxlength="50"
 					required="required"
-					value="${modalidadeBean.recuperaModalidade(param['id']).descricao}">
+					value="${modalidadeBean.recuperaModalidade(param['id']).descricao}${param['descricao']}">
 
 				<div class="form-actions">
 					<button type="submit" name="enviar" class="btn btn-primary">Salvar</button>
