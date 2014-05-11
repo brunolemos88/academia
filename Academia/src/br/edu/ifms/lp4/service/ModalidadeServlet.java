@@ -1,6 +1,7 @@
 package br.edu.ifms.lp4.service;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +16,9 @@ import br.edu.ifms.lp4.modelo.Modalidade;
 public class ModalidadeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private String mensagem = "";
-	private String classeCSS = "";
+	private String mensagem = "mensagem";
+	private String classeCSS = "classeCSS";
+	private HashMap<String, String> mensagens;
 	
 	private Integer id;
 
@@ -36,7 +38,8 @@ public class ModalidadeServlet extends HttpServlet {
 			case "salva":
 				String descricao = request.getParameter("descricao");
 				if (request.getParameter("id").equals("")){
-					response.sendRedirect(salva(descricao, null));			
+					String url = salva(descricao, null);
+					response.sendRedirect(url);			
 				}else{
 					id = Integer.parseInt(request.getParameter("id"));
 					response.sendRedirect(salva(descricao, id));
@@ -46,59 +49,33 @@ public class ModalidadeServlet extends HttpServlet {
 				id = Integer.parseInt(request.getParameter("id"));
 				response.sendRedirect(remove(id));
 				break;
-			case "editar":
-				id = Integer.parseInt(request.getParameter("id"));
-				response.sendRedirect(editar(id));
 			default:
 				break;
 			}
 		} catch (Exception e) {
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("index.jsp?exception");
 		}
 
 	}
 
 	private String remove(Integer id) {
-
-		modalidade = new Modalidade();
-
-		if (bean.deletaModalidade(id)) {
-			mensagem = "Removido com sucesso!";
-			classeCSS = "alert alert-success";
-		} else {
-			mensagem = "Erro ao remover!";
-			classeCSS = "alert alert-error";
-		}
-		return resposta(mensagem, classeCSS);
-
+		mensagens = bean.removeModalidade(id);
+		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
 	}
 
 	private String salva(String descricao, Integer id) {
-
 		modalidade = new Modalidade();
 		modalidade.setDescricao(descricao);
 		modalidade.setId(id);
-
-		if (bean.salvaModalidade(modalidade)) {
-			mensagem = "Salvo com sucesso!";
-			classeCSS = "alert alert-success";
-		} else {
-			classeCSS = "alert alert-error";
-			mensagem = "Ocorreu um erro ao tentar salvar.";
-		}
-
-		return resposta(mensagem, classeCSS);
-	}
-	
-	private String editar(Integer id){
-		modalidade = new Modalidade();
-		bean.recuperaModalidade(id);
-		return null;
+		
+		mensagens = bean.salvaModalidade(modalidade);
+		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
 	}
 
-	private String resposta(String mensagem, String classResposta) {
+	private String resposta(String mensagem, String classeResposta) {
 		return "index.jsp?pagina=modalidades&resposta=" + mensagem
-				+ "&classResposta=" + classeCSS;
+				+ "&classResposta=" + classeResposta;
 	}
 
 }
+
