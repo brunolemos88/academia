@@ -61,7 +61,7 @@ public class ModalidadeBean {
 		}
 		if(classeCSS.equals(classeCSSSucesso)){
 			HashMap<String, String> mensagens = new HashMap<>();
-			mensagens.put(classeCSS, classeCSSSucesso);
+			mensagens.put(this.classeCSS, classeCSSSucesso);
 			mensagens.put(this.mensagem, mensagem);
 			return mensagens;
 		}
