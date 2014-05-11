@@ -23,19 +23,32 @@ public class ModalidadeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String descricao = request.getParameter("descricao");
-		String resposta = "";
-
-		if (descricao != null && !descricao.isEmpty()) {
-			Modalidade modalidade = new Modalidade();
-			modalidade.setDescricao(descricao);
-
-			ModalidadeBean modalidadeBean = new ModalidadeBean();
-			resposta = modalidadeBean.salvaModalidade(modalidade) ? "Salvo com sucesso!" : "Erro ao gravar";
-		}else{
-			resposta = "Nenhuma descrição informada";
-		}
-		
-		response.sendRedirect("index.jsp?resposta=" + resposta);
+		// String descricao = request.getParameter("descricao");
+		// String resposta = "";
+		//
+		// if (descricao != null && !descricao.isEmpty()) {
+		// Modalidade modalidade = new Modalidade();
+		// modalidade.setDescricao(descricao);
+		//
+		// ModalidadeBean modalidadeBean = new ModalidadeBean();
+		// resposta = modalidadeBean.salvaModalidade(modalidade) ?
+		// "Salvo com sucesso!" : "Erro ao gravar";
+		// }else{
+		// resposta = "Nenhuma descrição informada";
+		// }
+		//
+		// response.sendRedirect("index.jsp?resposta=" + resposta);
 	}
+
+	@Override
+	protected void service(HttpServletRequest arg0, HttpServletResponse response)
+			throws ServletException, IOException {
+		super.service(arg0, response);
+
+		ModalidadeBean modalidadeBean = new ModalidadeBean();
+		Modalidade modalidade = modalidadeBean.recuperaModalidade(1);
+	
+		response.sendRedirect("index.jsp?resposta=" + modalidadeBean.deletaModalidade(modalidade));
+	}
+
 }

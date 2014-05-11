@@ -15,8 +15,8 @@ public class ModalidadeDao extends JPADao<Modalidade> {
 	public Modalidade recupera(Serializable id) {
 		try {
 			em = JPAUtil.getEntityManager();
-			String cpf = String.valueOf(id);
-			Modalidade objeto = (Modalidade) em.find(Modalidade.class, cpf);
+			Integer chave = (Integer) id;
+			Modalidade objeto = (Modalidade) em.find(Modalidade.class, chave);
 			em.close();
 			return objeto;
 		} catch (Exception e) {
