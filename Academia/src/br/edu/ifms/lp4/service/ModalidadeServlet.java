@@ -35,10 +35,12 @@ public class ModalidadeServlet extends HttpServlet {
 			switch (acao) {
 			case "salva":
 				String descricao = request.getParameter("descricao");
-				if (request.getParameter("id") != null){
+				if (request.getParameter("id").equals("")){
+					response.sendRedirect(salva(descricao, null));			
+				}else{
 					id = Integer.parseInt(request.getParameter("id"));
+					response.sendRedirect(salva(descricao, id));
 				}
-				response.sendRedirect(salva(descricao));
 				break;
 			case "remove":
 				id = Integer.parseInt(request.getParameter("id"));
@@ -71,17 +73,18 @@ public class ModalidadeServlet extends HttpServlet {
 
 	}
 
-	private String salva(String descricao) {
+	private String salva(String descricao, Integer id) {
 
 		modalidade = new Modalidade();
 		modalidade.setDescricao(descricao);
+		modalidade.setId(id);
 
 		if (bean.salvaModalidade(modalidade)) {
 			mensagem = "Salvo com sucesso!";
 			classeCSS = "alert alert-success";
 		} else {
 			classeCSS = "alert alert-error";
-			mensagem = "Ocorreu um erro ao tentar realizar o cadastro.";
+			mensagem = "Ocorreu um erro ao tentar salvar.";
 		}
 
 		return resposta(mensagem, classeCSS);

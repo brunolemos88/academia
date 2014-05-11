@@ -44,20 +44,11 @@
 					<c:when test="${param['pagina']=='modalidades'}">
 						<c:import url="paginas/modalidades.jsp"></c:import>
 					</c:when>
-					<c:when test="${param['pagina']=='cadastraModalidade'}">
-						<c:import url="paginas/cadastraModalidade.jsp"></c:import>
-					</c:when>
 					<c:when test="${param['pagina']=='equipamentos'}">
 						<c:import url="paginas/equipamentos.jsp"></c:import>
 					</c:when>
-					<c:when test="${param['pagina']=='cadastraEquipamento'}">
-						<c:import url="paginas/cadastraEquipamento.jsp"></c:import>
-					</c:when>
 					<c:when test="${param['pagina']=='cursos'}">
 						<c:import url="paginas/cursos.jsp"></c:import>
-					</c:when>
-					<c:when test="${param['pagina']=='cadastraCurso'}">
-						<c:import url="paginas/cadastraCurso.jsp"></c:import>
 					</c:when>
 					<c:otherwise>
 						<c:import url="paginas/inicio.jsp"></c:import>

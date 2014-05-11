@@ -12,16 +12,17 @@
 <div class="row-fluid">
 	<div class="span12">
 
-		<form name="cadastra_modalidade" action="modalidade?acao=salva"
+		<form name="cadastra_modalidade" action="modalidade?acao=salva&id=${modalidadeBean.recuperaModalidade(param['id']).id}"
 			method="post" enctype="application/x-www-form-urlencoded">
 			<fieldset>
 
 				<label>Descrição</label> <input class="input-block-level"
 					type="text" name="descricao" autofocus="autofocus" maxlength="50"
-					required="required" value="">
+					required="required"
+					value="${modalidadeBean.recuperaModalidade(param['id']).descricao}">
 
 				<div class="form-actions">
-					<button type="submit" name="enviar" class="btn btn-primary">Cadastrar</button>
+					<button type="submit" name="enviar" class="btn btn-primary">Salvar</button>
 					<button type="reset" class="btn">Limpar</button>
 				</div>
 
@@ -52,7 +53,10 @@
 			<tr>
 				<td>${modalidade.id}</td>
 				<td>${modalidade.descricao}</td>
-				<td><a href="modalidade?id=${modalidade.id}&acao=remove" title="Apagar"
+				<td><a href="index.jsp?pagina=modalidades&id=${modalidade.id}"
+					class="btn btn-mini btn-warning" title="Editar"><i
+						class="icon-edit icon-white"></i></a> <a
+					href="modalidade?id=${modalidade.id}&acao=remove" title="Apagar"
 					class="btn btn-mini btn-danger"><i
 						class="icon-remove icon-white"></i></a></td>
 			</tr>
