@@ -11,7 +11,6 @@ public class ModalidadeBean {
 	private List<Modalidade> modalidades;
 	private ModalidadeDao modalidadeDao = new ModalidadeDao();
 	
-	private HashMap<String, String> mensagens;
 	private final String classeCSSSucesso = "alert alert-success";
 	private final String classeCSSErro = "alert alert-error";
 	private final String mensagem = "mensagem";
@@ -55,17 +54,21 @@ public class ModalidadeBean {
 	
 	private HashMap<String, String> preencheMensagens(String classeCSS, String mensagem){
 		if(classeCSS.equals(classeCSSErro)){
-			this.mensagens.put(this.classeCSS, classeCSS);
-			this.mensagens.put(this.mensagem, mensagem);
-			return this.mensagens;
+			HashMap<String, String> mensagens = new HashMap<>();
+			mensagens.put(this.classeCSS, classeCSSErro);
+			mensagens.put(this.mensagem, mensagem);
+			return mensagens;
 		}
 		if(classeCSS.equals(classeCSSSucesso)){
-			this.mensagens.put(this.classeCSS, classeCSS);
-			this.mensagens.put(this.mensagem, mensagem);
-			return this.mensagens;
+			HashMap<String, String> mensagens = new HashMap<>();
+			mensagens.put(classeCSS, classeCSSSucesso);
+			mensagens.put(this.mensagem, mensagem);
+			return mensagens;
 		}
-		this.mensagens.put(classeCSS, classeCSSErro);
-		this.mensagens.put(mensagem, "SEGUINTE FUDEU, MUITO. Você chegou até aqui!");
-		return this.mensagens;
+		HashMap<String, String> mensagens = new HashMap<>();
+		mensagens.put(classeCSS, classeCSSErro);
+		mensagens.put(mensagem, "SEGUINTE FUDEU, MUITO. Você chegou até aqui!");
+		return mensagens;
+		
 	}
 }

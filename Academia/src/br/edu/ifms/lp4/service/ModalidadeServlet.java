@@ -57,8 +57,7 @@ public class ModalidadeServlet extends HttpServlet {
 				break;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
-			response.sendRedirect("index.jsp?exception");
+			response.sendRedirect("index.jsp");
 		}
 
 	}
@@ -74,9 +73,7 @@ public class ModalidadeServlet extends HttpServlet {
 		modalidade.setId(id);
 
 		mensagens = bean.salvaModalidade(modalidade);
-		
-		return "index.jsp?salvouuuuuuuuuuu";
-		//return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
+		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
 	}
 
 	private String resposta(String mensagem, String classeResposta) {
