@@ -6,12 +6,12 @@ import br.edu.ifms.lp4.jpa.dao.CursoDao;
 import br.edu.ifms.lp4.modelo.Curso;
 
 public class CursoBean {
-	private List<Curso> equipamentos;
+	private List<Curso> cursos;
 	private CursoDao cursoDao = new CursoDao();
 
 	public List<Curso> getModalidades() {
-		equipamentos = cursoDao.recuperaTodos();
-		return equipamentos;
+		cursos = cursoDao.recuperaTodos();
+		return cursos;
 	}
 
 	public boolean salvaModalidade(Curso modalidade) {
