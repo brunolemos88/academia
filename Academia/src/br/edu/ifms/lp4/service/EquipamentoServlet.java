@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifms.lp4.bean.EquipamentoBean;
+import br.edu.ifms.lp4.bean.ModalidadeBean;
 import br.edu.ifms.lp4.modelo.Equipamento;
+import br.edu.ifms.lp4.modelo.Modalidade;
 
 @WebServlet(name = "equipamento", urlPatterns = { "/equipamento" })
 public class EquipamentoServlet extends HttpServlet {
@@ -71,8 +73,14 @@ public class EquipamentoServlet extends HttpServlet {
 		equipamento = new Equipamento();
 		equipamento.setDescricao(descricao);
 		equipamento.setId(id);
-		equipamento.setIdModalidade(idModalidade);
 		equipamento.setQtdEstoque(qtdEstoque);
+		
+		try {
+			ModalidadeBean modalidadeBean = new ModalidadeBean();
+			Modalidade modalidade = modalidadeBean.recuperaModalidade(Integer.parseInt(idModalidade));
+			equipamento.setModalidade(modalidade);
+		} catch (Exception e) {}
+		
 
 		mensagens = bean.salvaEquipamento(equipamento);
 		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));

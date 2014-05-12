@@ -28,7 +28,7 @@ public class CursoBean {
 			mensagemErro += "Descrição deve ser preenchida! <br/>";
 			flagcursoValido = false;
 		}
-		if (curso.getIdModalidade() == null || curso.getIdModalidade().isEmpty()) {
+		if (curso.getModalidade() == null || curso.getModalidade().getId() == null) {
 			mensagemErro += "Selecione a modalidade! <br/>";
 			flagcursoValido = false;
 		}

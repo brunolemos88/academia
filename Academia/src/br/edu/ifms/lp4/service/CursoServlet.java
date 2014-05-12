@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.edu.ifms.lp4.bean.CursoBean;
+import br.edu.ifms.lp4.bean.ModalidadeBean;
 import br.edu.ifms.lp4.modelo.Curso;
+import br.edu.ifms.lp4.modelo.Modalidade;
 
 @WebServlet(name = "curso", urlPatterns = { "/curso" })
 public class CursoServlet extends HttpServlet {
@@ -42,6 +44,7 @@ public class CursoServlet extends HttpServlet {
 				String horario1 = request.getParameter("horario1");
 				String horario2 = request.getParameter("horario2");
 				String idModalidade = request.getParameter("idModalidade");
+				
 				if (request.getParameter("id").equals("")) {
 					response.sendRedirect(salva(null, descricao, horario1,
 							horario2, idModalidade));
@@ -78,7 +81,12 @@ public class CursoServlet extends HttpServlet {
 		curso.setDescricao(descricao);
 		curso.setHorario1(horario1);
 		curso.setHorario2(horario2);
-		curso.setIdModalidade(idModalidade);
+		
+		try {
+			ModalidadeBean modalidadeBean = new ModalidadeBean();
+			Modalidade modalidade = modalidadeBean.recuperaModalidade(Integer.parseInt(idModalidade));
+			curso.setModalidade(modalidade);			
+		} catch (Exception e) {}
 
 		mensagens = bean.salvaCurso(curso);
 		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));

@@ -33,10 +33,10 @@
 						required="required">
 						<option value=""></option>
 						<c:forEach var="modalidade" items="${modalidadeBean.modalidades}">
-							<option value="${modalidade.id}${param['idModalidade']}">${modalidade.descricao}</option>
+							<option value="${modalidade.id}">${modalidade.descricao}</option>
 						</c:forEach>
 					</select>
-
+idModalidade
 					<div class="form-actions">
 						<button type="submit" name="enviar" class="btn btn-primary">Salvar</button>
 						<button type="reset" class="btn">Limpar</button>
@@ -83,7 +83,7 @@
 				<td>${curso.descricao}</td>
 				<td>${curso.horario1}</td>
 				<td>${curso.horario2}</td>
-				<td>${modalidadeBean.recuperaModalidade(curso.idModalidade).descricao}</td>
+				<td>${modalidadeBean.recuperaModalidade(curso.modalidade.id).descricao}</td>
 				<td><a href="index.jsp?pagina=cursos&id=${curso.id}"
 					class="btn btn-warning" title="Editar"><i
 						class="icon-edit icon-white"></i></a> <a

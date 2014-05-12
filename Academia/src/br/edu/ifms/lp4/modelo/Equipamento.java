@@ -3,6 +3,7 @@ package br.edu.ifms.lp4.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
@@ -17,7 +18,8 @@ public class Equipamento {
 
 	private String descricao;
 
-	private String idModalidade;
+	@ManyToOne
+	private Modalidade modalidade;
 
 	private String qtdEstoque;
 
@@ -38,12 +40,12 @@ public class Equipamento {
 		this.descricao = descricao;
 	}
 
-	public String getIdModalidade() {
-		return idModalidade;
+	public Modalidade getModalidade() {
+		return modalidade;
 	}
 
-	public void setIdModalidade(String idModalidade) {
-		this.idModalidade = idModalidade;
+	public void setModalidade(Modalidade modalidade) {
+		this.modalidade = modalidade;
 	}
 
 	public String getQtdEstoque() {

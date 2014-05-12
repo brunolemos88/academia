@@ -45,7 +45,7 @@ public class ModalidadeBean {
 				return preencheMensagens(classeCSSSucesso, "Modalidade removida com sucesso!");
 			}
 		}
-		return preencheMensagens(classeCSSErro, "Error ao remover modalidade!");
+		return preencheMensagens(classeCSSErro, "Error ao remover modalidade, existem cursos ou equipamentos cadastranos nessa modalidade!");
 	}
 	
 	public Modalidade recuperaModalidade(Integer id){

@@ -29,7 +29,7 @@ public class EquipamentoBean {
 			mensagemErro += "Descrição deve ser preenchida! <br/>";
 			flagEquipamentoValido = false;
 		}
-		if (equipamento.getIdModalidade() == null || equipamento.getIdModalidade().isEmpty()) {
+		if (equipamento.getModalidade() == null || equipamento.getModalidade().getId() == null) {
 			mensagemErro += "Selecione a modalidade! <br/>";
 			flagEquipamentoValido = false;
 		}
