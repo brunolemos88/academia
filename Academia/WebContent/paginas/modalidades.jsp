@@ -54,10 +54,10 @@
 				<td>${modalidade.id}</td>
 				<td>${modalidade.descricao}</td>
 				<td><a href="index.jsp?pagina=modalidades&id=${modalidade.id}"
-					class="btn btn-mini btn-warning" title="Editar"><i
+					class="btn btn-warning" title="Editar"><i
 						class="icon-edit icon-white"></i></a> <a
 					href="modalidade?id=${modalidade.id}&acao=remove" title="Apagar"
-					class="btn btn-mini btn-danger"><i
+					class="btn btn-danger"><i
 						class="icon-remove icon-white"></i></a></td>
 			</tr>
 		</c:forEach>
