@@ -25,7 +25,7 @@ public class EquipamentoServlet extends HttpServlet {
 	private EquipamentoBean bean = new EquipamentoBean();
 	private Equipamento equipamento;
 
-	public EquipamentoServlet() {
+	public EquipamentoServlet() { 
 		super();
 	}
 
@@ -36,15 +36,15 @@ public class EquipamentoServlet extends HttpServlet {
 			String acao = request.getParameter("acao");
 			
 			switch (acao) {
-			
 			case "salva":
 				String descricao = request.getParameter("descricao");
+				String idModalidade = request.getParameter("idModalidade");
+				String qtdEstoque = request.getParameter("qtdEstoque");
 				if (request.getParameter("id").equals("")) {
-					String url = salva(descricao, null);
-					response.sendRedirect(url);
+					response.sendRedirect(salva(descricao, null, qtdEstoque, idModalidade));
 				} else {
 					id = Integer.parseInt(request.getParameter("id"));
-					response.sendRedirect(salva(descricao, id));
+					response.sendRedirect(salva(descricao, id, qtdEstoque, idModalidade));
 				}
 				break;
 			
@@ -67,10 +67,12 @@ public class EquipamentoServlet extends HttpServlet {
 		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));
 	}
 
-	private String salva(String descricao, Integer id) {
+	private String salva(String descricao, Integer id, String qtdEstoque, String idModalidade) {
 		equipamento = new Equipamento();
 		equipamento.setDescricao(descricao);
 		equipamento.setId(id);
+		equipamento.setIdModalidade(idModalidade);
+		equipamento.setQtdEstoque(qtdEstoque);
 
 		mensagens = bean.salvaEquipamento(equipamento);
 		return resposta(mensagens.get(mensagem), mensagens.get(classeCSS));

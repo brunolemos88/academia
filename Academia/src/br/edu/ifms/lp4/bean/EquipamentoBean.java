@@ -22,18 +22,28 @@ public class EquipamentoBean {
 	}
 
 	public HashMap<String, String> salvaEquipamento(Equipamento equipamento) {
-
+		String mensagemErro = "Não foi possivel salvar o equipamento!<br/>";
+		boolean flagEquipamentoValido = true;
+		
 		if (equipamento == null || equipamento.getDescricao().equals("")) {
-			return preencheMensagens(classeCSSErro,
-					"Descrição deve ser preenchida!");
-		} else {
-			if (equipamentoDao.salva(equipamento) != null) {
-				return preencheMensagens(classeCSSSucesso,
-						"Equipamento salva com sucesso!");
-			}
+			mensagemErro += "Descrição deve ser preenchida! <br/>";
+			flagEquipamentoValido = false;
+		}
+		if (equipamento.getIdModalidade() == null || equipamento.getIdModalidade().isEmpty()) {
+			mensagemErro += "Selecione a modalidade! <br/>";
+			flagEquipamentoValido = false;
+		}
+		if (equipamento.getQtdEstoque() == null
+				|| equipamento.getQtdEstoque().isEmpty()) {
+			mensagemErro += "Informe a quantidade em estoque!<br/>";
+			flagEquipamentoValido = false;
+		}
+		
+		if (flagEquipamentoValido && equipamentoDao.salva(equipamento) != null) {
+			return preencheMensagens(classeCSSSucesso, "Equipamento salva com sucesso!");
 		}
 
-		return preencheMensagens(classeCSSErro, "Error ao salvar equipamento!");
+		return preencheMensagens(classeCSSErro, mensagemErro);
 	}
 
 	public HashMap<String, String> removeEquipamento(Integer id) {
