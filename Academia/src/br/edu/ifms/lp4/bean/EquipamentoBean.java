@@ -40,7 +40,7 @@ public class EquipamentoBean {
 		}
 		
 		if (flagEquipamentoValido && equipamentoDao.salva(equipamento) != null) {
-			return preencheMensagens(classeCSSSucesso, "Equipamento salva com sucesso!");
+			return preencheMensagens(classeCSSSucesso, "Equipamento salvo com sucesso!");
 		}
 
 		return preencheMensagens(classeCSSErro, mensagemErro);

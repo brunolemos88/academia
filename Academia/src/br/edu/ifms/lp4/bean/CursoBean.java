@@ -42,7 +42,7 @@ public class CursoBean {
 		}
 		
 		if (flagcursoValido && cursoDao.salva(curso) != null) {
-			return preencheMensagens(classeCSSSucesso, "curso salva com sucesso!");
+			return preencheMensagens(classeCSSSucesso, "Curso salvo com sucesso!");
 		}
 
 		return preencheMensagens(classeCSSErro, mensagemErro);

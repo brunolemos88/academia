@@ -32,7 +32,7 @@
 					<label>Modalidade</label> <select name="idModalidade" required="required">
 						<option value=""></option>
 						<c:forEach var="modalidade" items="${modalidadeBean.modalidades}">
-							<option value="${modalidade.id}${param['idModalidade']}">${modalidade.descricao}</option>
+							<option value="${modalidade.id}">${modalidade.descricao}</option>
 						</c:forEach>
 					</select>
 
@@ -79,7 +79,7 @@
 			<tr>
 				<td>${equipamento.id}</td>
 				<td>${equipamento.descricao}</td>
-				<td>${modalidadeBean.recuperaModalidade(equipamento.idModalidade).descricao}${param['descricao']}</td>
+				<td>${modalidadeBean.recuperaModalidade(equipamento.modalidade.id).descricao}${param['descricao']}</td>
 				<td>${equipamento.qtdEstoque}</td>
 				<td><a href="index.jsp?pagina=equipamentos&id=${equipamento.id}"
 					class="btn btn-warning" title="Editar"><i
