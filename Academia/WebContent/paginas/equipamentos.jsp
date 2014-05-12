@@ -81,10 +81,10 @@
 				<td>${equipamento.descricao}</td>
 				<td>${modalidadeBean.recuperaModalidade(equipamento.idModalidade).descricao}${param['descricao']}</td>
 				<td>${equipamento.qtdEstoque}</td>
-				<td><a href="index.jsp?pagina=modalidades&id=${equipamento.id}"
+				<td><a href="index.jsp?pagina=equipamentos&id=${equipamento.id}"
 					class="btn btn-warning" title="Editar"><i
 						class="icon-edit icon-white"></i></a> <a
-					href="modalidade?id=${equipamento.id}&acao=remove" title="Apagar"
+					href="equipamento?id=${equipamento.id}&acao=remove" title="Apagar"
 					class="btn btn-danger"><i
 						class="icon-remove icon-white"></i></a></td>
 			</tr>
