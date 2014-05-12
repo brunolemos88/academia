@@ -11,7 +11,7 @@ import javax.persistence.NamedQuery;
 public class Equipamento {
 
 	public static final String LISTAR_TODOS = "Equipamento.listarTodos";
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
@@ -29,6 +29,10 @@ public class Equipamento {
 
 	public String getDescricao() {
 		return descricao;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public void setDescricao(String descricao) {
