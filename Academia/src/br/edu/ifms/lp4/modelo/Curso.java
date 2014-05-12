@@ -9,16 +9,15 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQuery(name = Curso.LISTAR_TODOS, query = "FROM Curso ORDER BY id")
 public class Curso {
-	
+
 	public static final String LISTAR_TODOS = "Curso.listarTodos";
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
 
 	private String descricao;
-	
-	@ManyToOne(targetEntity = Modalidade.class)
+
 	private String idModalidade;
 
 	private String horario1;
@@ -27,6 +26,10 @@ public class Curso {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getDescricao() {
