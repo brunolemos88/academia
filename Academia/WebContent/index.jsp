@@ -7,8 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ACADEMIA LP4</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style-painel.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/bootstrap-wysihtml5.css" rel="stylesheet"
+	type="text/css">
+<link href="css/bootstrap-fileupload.min.css" rel="stylesheet">
+
 </head>
 <body>
 

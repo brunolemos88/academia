@@ -29,7 +29,7 @@
 						maxlength="5"
 						value="${equipamentoBean.recuperaEquipamento(param['id']).qtdEstoque}${param['qtdEstoque']}">
 
-					<label>Modalidade</label> <select name="idModalidade">
+					<label>Modalidade</label> <select name="idModalidade" required="required">
 						<option value=""></option>
 						<c:forEach var="modalidade" items="${modalidadeBean.modalidades}">
 							<option value="${modalidade.id}${param['idModalidade']}">${modalidade.descricao}</option>
@@ -70,7 +70,7 @@
 				<th width="40px">ID</th>
 				<th>Descrição</th>
 				<th>Modalidade</th>
-				<th>Quantida Estoque</th>
+				<th>Quantia Estoque</th>
 				<th width="90px">Funções</th>
 			</tr>
 		</thead>
@@ -79,13 +79,13 @@
 			<tr>
 				<td>${equipamento.id}</td>
 				<td>${equipamento.descricao}</td>
-				<td>${modalidadeBean.recuperaModalidade(equipamento.id).descricao}${param['descricao']}</td>
+				<td>${modalidadeBean.recuperaModalidade(equipamento.idModalidade).descricao}${param['descricao']}</td>
 				<td>${equipamento.qtdEstoque}</td>
 				<td><a href="index.jsp?pagina=modalidades&id=${equipamento.id}"
-					class="btn btn-mini btn-warning" title="Editar"><i
+					class="btn btn-warning" title="Editar"><i
 						class="icon-edit icon-white"></i></a> <a
 					href="modalidade?id=${equipamento.id}&acao=remove" title="Apagar"
-					class="btn btn-mini btn-danger"><i
+					class="btn btn-danger"><i
 						class="icon-remove icon-white"></i></a></td>
 			</tr>
 		</c:forEach>
