@@ -1,1 +1,1 @@
-Seja Bem vindo a ACADEMIA LP4
+<img src="img/fundo.jpg" width="100%"/>
