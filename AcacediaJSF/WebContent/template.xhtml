@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title><ui:insert name="pageTitle">ACADEMIA LP4</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="bootstrap-responsive.css" />
+	<h:outputStylesheet library="css" name="default.css" />
+</h:head>
+<h:body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="brand" href="/AcademiaJSF">ACADEMIA LP4 - IFMS</a>
+				<div class="nav-collapse collapse">
+					<p class="navbar-text pull-right">
+						Seja Bem vindo(a) <a href="#" class="navbar-link"> </a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<div class="well sidebar-nav">
+					<h:form>
+						<ul class="nav nav-list">
+							<li class="nav-header">Modalidade</li>
+							<li><a href="modalidades.jsf">Modalidades</a></li>
+							<h:commandLink action="#{modalidadeBean.aoCadastrar}">Cadastrar Modalidade</h:commandLink>
+							<li class="nav-header">Equipamento</li>
+							<li class="nav-header">Curso</li>
+						</ul>
+					</h:form>
+				</div>
+			</div>
+
+			<div class="span9">
+				<ui:insert name="conteudo" />
+			</div>
+		</div>
+
+		<hr />
+		<p>
+			&copy; 2014 <strong>ACADEMIA LP4 - IFMS</strong>
+		</p>
+		academia@mail.com
+	</div>
+</h:body>
+</html>

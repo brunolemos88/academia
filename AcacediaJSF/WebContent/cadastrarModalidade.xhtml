@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="template.xhtml">
+
+	<ui:define name="conteudo">
+		<h1>Cadastrar nova Modalidade</h1>
+		
+		<br />
+		<h:form prependId="false">
+			<h:messages id="mensagem" errorClass="erro" styleClass="sucesso" />
+			<h:panelGrid columns="2">
+			
+				Descrição:
+				<h:inputText id="descricao" value="#{modalidadeBean.modalidade.descricao}"
+					required="true"
+					requiredMessage="A descrição deve ser preenchida.">
+				</h:inputText>
+
+				<h:commandButton value="Salvar" action="#{modalidadeBean.salva}" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

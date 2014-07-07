@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="template.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form prependId="false">
+
+			<h:messages id="mensagem" errorClass="erro" styleClass="sucesso" />
+
+			<p:dataTable id="tabelaModalidades" value="#{modalidadeBean.lista}"
+				var="modalidade" paginator="true" rowsPerPageTemplate="5,10,15"
+				emptyMessage="Nenhuma modalidade cadastrada.">
+
+				<f:facet name="header">Modalidades Cadastradas</f:facet>
+
+				<p:column>
+					<f:facet name="header">
+								ID
+							</f:facet>
+							#{modalidade.id}
+						</p:column>
+
+				<p:column>
+					<f:facet name="header">
+								Descrição
+							</f:facet>
+							#{modalidade.descricao}
+						</p:column>
+
+				<p:column>
+					<p:commandLink oncomplete="dialogExclusao.show();">
+						<span class="ui-icon ui-icon-trash"></span>
+						<f:setPropertyActionListener value="#{modalidade}"
+							target="#{modalidadeBean.modalidade}" />
+					</p:commandLink>
+				</p:column>
+
+				<p:column>
+					<h:commandLink action="#{modalidadeBean.aoEditar(modalidade)}">
+						<span class="ui-icon ui-icon-pencil"></span>
+					</h:commandLink>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog widgetVar="dialogExclusao" id="dialogExclusao"
+				header="Excluir" message="#{modalidadeBean.aoExcluir(modalidade)}"
+				width="400" showEffect="bounce" modal="true" closable="false"
+				severity="alert">
+				<h:panelGroup layout="block" style="text-align: right">
+					<p:commandButton value="Sim" action="#{modalidadeBean.exclui}"
+						oncomplete="dialogExclusao.hide();"
+						update="tabelaModalidades, mensagem" />
+					<p:commandButton value="Não" oncomplete="dialogExclusao.hide();" />
+				</h:panelGroup>
+			</p:confirmDialog>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>
